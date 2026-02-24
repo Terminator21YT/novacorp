@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nova Corp – Markenvielfalt & individuelle Designs</title>
+<!-- ─── FAVICON ────────────────────────────────────────
+     Ersetze "favicon.ico" mit deiner eigenen Datei.
+     Unterstützte Formate: .ico, .png, .svg
+     Empfohlene Größen: 32x32px (ico), 192x192px (png)
+     Einfach die Datei auf deinen Server laden und den
+     Dateinamen unten anpassen.
+──────────────────────────────────────────────────── -->
+<link rel="icon" type="image/x-icon"  href="favicon.ico">
+<link rel="icon" type="image/png"     href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon"          href="favicon.png" sizes="180x180">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -1633,16 +1643,51 @@ body::after {
       </div>
       <div class="inner-content">
         <div class="content-card reveal">
-          <h3>Datenschutzerklärung</h3>
-          <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
+          <h3>1. Verantwortlicher</h3>
+          <p>
+            <strong>Nova Corp</strong><br>
+            Giuseppe Antonio Majica<br>
+            Pater-Dionysius-Str. 41<br>
+            50739 Köln-Chorweiler<br>
+            Deutschland<br><br>
+            <a id="mail-datenschutz" style="color:var(--accent-light);"></a>
+          </p>
         </div>
+
         <div class="content-card reveal">
-          <h3>Kontaktformular</h3>
-          <p>Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+          <h3>2. Erhebung und Speicherung personenbezogener Daten</h3>
+          <p>Beim Besuch unserer Website nova-corp.de werden durch den Browser automatisch Informationen an unseren Server übermittelt. Diese sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners sowie Uhrzeit der Serveranfrage. Diese Daten sind nicht bestimmten Personen zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt.</p>
         </div>
+
         <div class="content-card reveal">
-          <h3>Ihre Rechte</h3>
-          <p>Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Bei Fragen wenden Sie sich bitte an <a id="mail-datenschutz" style="color:var(--accent-light);"></a>.</p>
+          <h3>3. Kontaktaufnahme</h3>
+          <p>Bei der Kontaktaufnahme per E-Mail oder Telefon werden Ihre Angaben zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten werden nicht ohne Ihre Einwilligung weitergegeben.</p>
+        </div>
+
+        <div class="content-card reveal">
+          <h3>4. Cookies</h3>
+          <p>Diese Website verwendet ausschließlich technisch notwendige Cookies (z. B. zur Speicherung Ihrer Dark/Light-Mode-Präferenz via localStorage). Es werden keine Tracking- oder Marketing-Cookies eingesetzt. Eine Einwilligung ist daher nicht erforderlich.</p>
+        </div>
+
+        <div class="content-card reveal">
+          <h3>5. Ihre Rechte (DSGVO)</h3>
+          <p>Sie haben jederzeit das Recht auf: Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO), Berichtigung unrichtiger Daten (Art. 16 DSGVO), Löschung Ihrer Daten (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch gegen die Verarbeitung (Art. 21 DSGVO).<br><br>Zur Ausübung Ihrer Rechte wenden Sie sich an: <a id="mail-datenschutz-2" style="color:var(--accent-light);"></a></p>
+        </div>
+
+        <div class="content-card reveal">
+          <h3>6. Beschwerderecht</h3>
+          <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Behörde für Nordrhein-Westfalen ist der Landesbeauftragte für Datenschutz und Informationsfreiheit NRW (ldi.nrw.de).</p>
+        </div>
+
+        <div class="content-card reveal">
+          <h3>7. Datensicherheit</h3>
+          <p>Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie an „https://" in der Adresszeile Ihres Browsers.</p>
+        </div>
+
+        <div class="content-card reveal">
+          <h3>8. Aktualität</h3>
+          <p style="margin-bottom:0.5rem;">Diese Datenschutzerklärung gilt für nova-corp.de und ist aktuell gültig.</p>
+          <p style="font-size:0.8rem;color:var(--text-3);">Stand: 24. Februar 2026</p>
         </div>
       </div>
     </div>
@@ -1814,7 +1859,7 @@ window.addEventListener('scroll', () => {
   if (imp) { imp.href = hImprint; imp.textContent = imprint; }
 
   // All other links use the general address
-  ['mail-datenschutz','mail-team','mail-wartungen','mail-novasurf'].forEach(id => {
+  ['mail-datenschutz','mail-datenschutz-2','mail-team','mail-wartungen','mail-novasurf'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.href = hGeneral; el.textContent = general; }
   });
