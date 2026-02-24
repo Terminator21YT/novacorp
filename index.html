@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Corp – Markenvielfalt & individuelle Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ─── CSS VARIABLES ─────────────────────────────── */
+:root {
+  --purple-1: #3b0764;
+  --purple-2: #6b21a8;
+  --purple-3: #9333ea;
+  --purple-4: #c084fc;
+  --purple-5: #e9d5ff;
+  --gold: #c9a84c;
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #070509;
+  --bg-2: #0f0a15;
+  --bg-3: #18102a;
+  --surface: #1a1128;
+  --surface-2: #231539;
+  --border: rgba(147,51,234,0.18);
+  --border-soft: rgba(255,255,255,0.06);
+  --text: #f5f0ff;
+  --text-2: #c4b5d6;
+  --text-3: #8b7aa0;
+  --accent: #9333ea;
+  --accent-light: #c084fc;
+  --glow: rgba(147,51,234,0.35);
+  --nav-bg: rgba(7,5,9,0.82);
+  --card-bg: rgba(26,17,40,0.6);
+  --hero-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(107,33,168,0.45) 0%, transparent 70%);
+}
+
+[data-theme="light"] {
+  --bg: #faf7ff;
+  --bg-2: #f3edff;
+  --bg-3: #ede4ff;
+  --surface: #ffffff;
+  --surface-2: #f5f0ff;
+  --border: rgba(147,51,234,0.2);
+  --border-soft: rgba(0,0,0,0.06);
+  --text: #1a0f2e;
+  --text-2: #3d2260;
+  --text-3: #7c5fa8;
+  --accent: #7c3aed;
+  --accent-light: #9333ea;
+  --glow: rgba(124,58,237,0.2);
+  --nav-bg: rgba(250,247,255,0.88);
+  --card-bg: rgba(255,255,255,0.8);
+  --hero-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(167,107,255,0.25) 0%, transparent 70%);
+}
+
+/* ─── RESET & BASE ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ─── ANIMATED BACKGROUND ────────────────────────── */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--purple-2), transparent);
+  top: -200px; left: -100px;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--purple-3), transparent);
+  top: 40%; right: -100px;
+  animation-delay: -7s;
+}
+.orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #4c1d95, transparent);
+  bottom: 10%; left: 30%;
+  animation-delay: -14s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+/* ─── NAVIGATION ─────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-logo .logo-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 10px var(--glow); }
+  50% { box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow); }
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent-light);
+  background: rgba(147,51,234,0.1);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.theme-toggle {
+  width: 44px; height: 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  box-shadow: 0 0 8px var(--glow);
+}
+[data-theme="light"] .theme-toggle::after {
+  transform: translateX(20px);
+  background: var(--gold);
+}
+.theme-icon {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-icon svg { width: 10px; height: 10px; opacity: 0.7; }
+.theme-icon.moon { right: 4px; }
+.theme-icon.sun { left: 4px; }
+.nav-cta {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 0 20px rgba(147,51,234,0.3);
+}
+.nav-cta:hover {
+  background: var(--purple-2);
+  box-shadow: 0 0 30px rgba(147,51,234,0.5);
+  transform: translateY(-1px);
+}
+
+/* ─── HAMBURGER ──────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px; height: 40px;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 0;
+  position: relative;
+  transition: border-color 0.3s, background 0.3s;
+  flex-shrink: 0;
+}
+.hamburger:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+.hamburger span {
+  display: block;
+  width: 18px; height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+              opacity   0.3s ease,
+              top       0.4s cubic-bezier(0.16,1,0.3,1),
+              width     0.3s ease;
+}
+.hamburger span:nth-child(1) { top: 13px; }
+.hamburger span:nth-child(2) { top: 19px; }
+.hamburger span:nth-child(3) { top: 25px; width: 12px; }
+
+/* Open state → X */
+.hamburger.open span:nth-child(1) {
+  top: 19px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-4px);
+}
+.hamburger.open span:nth-child(3) {
+  top: 19px;
+  width: 18px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* ─── MOBILE MENU ────────────────────────────────── */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: fixed;
+  top: 68px; left: 0; right: 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem;
+  z-index: 99;
+
+  /* slide + fade animation */
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    clip-path 0.45s cubic-bezier(0.16,1,0.3,1),
+    opacity   0.3s ease;
+}
+.mobile-menu.open {
+  clip-path: inset(0 0 0% 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: color 0.2s, background 0.2s, transform 0.2s;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: color 0.2s, background 0.2s, transform 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+}
+.mobile-menu.open a {
+  transform: translateY(0);
+  opacity: 1;
+}
+/* staggered reveal per link */
+.mobile-menu a:nth-child(1) { transition-delay: 0.06s; }
+.mobile-menu a:nth-child(2) { transition-delay: 0.10s; }
+.mobile-menu a:nth-child(3) { transition-delay: 0.14s; }
+.mobile-menu a:nth-child(4) { transition-delay: 0.18s; }
+.mobile-menu a:nth-child(5) { transition-delay: 0.22s; }
+.mobile-menu a:nth-child(6) { transition-delay: 0.26s; }
+.mobile-menu a:hover {
+  color: var(--accent-light);
+  background: rgba(147,51,234,0.1);
+}
+.mobile-menu .menu-arrow {
+  margin-left: auto;
+  width: 16px; height: 16px;
+  opacity: 0.35;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.mobile-menu a:hover .menu-arrow {
+  opacity: 0.7;
+  transform: translateX(3px);
+}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 2rem 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-gradient);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  max-width: 900px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  background: rgba(147,51,234,0.12);
+  border: 1px solid var(--border);
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s var(--transition) both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s infinite;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.2em;
+  animation: fadeUp 0.8s var(--transition) 0.1s both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+.hero-title .line-2 {
+  display: block;
+  font-weight: 600;
+}
+.hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 300;
+  color: var(--text-3);
+  max-width: 560px;
+  margin: 1.5rem auto 2.5rem;
+  line-height: 1.7;
+  animation: fadeUp 0.8s var(--transition) 0.2s both;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s var(--transition) 0.3s both;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: 0 4px 24px rgba(147,51,234,0.4), 0 0 60px rgba(147,51,234,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(147,51,234,0.55), 0 0 80px rgba(147,51,234,0.2);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-2);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.btn-secondary:hover {
+  color: var(--accent-light);
+  border-color: var(--accent);
+  background: rgba(147,51,234,0.08);
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-3);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeUp 1s var(--transition) 0.6s both;
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ─── SECTION BASE ───────────────────────────────── */
+section {
+  position: relative;
+  z-index: 1;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-title em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+/* ─── BRANDS ─────────────────────────────────────── */
+.brands-section {
+  padding: 60px 0;
+}
+.brands-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.brand-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition), border-color 0.4s;
+  animation: fadeUp 0.8s var(--transition) both;
+}
+.brand-card:nth-child(2) { animation-delay: 0.1s; }
+.brand-card:nth-child(3) { animation-delay: 0.2s; }
+.brand-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(147,51,234,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.brand-card:hover::before { opacity: 1; }
+.brand-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(147,51,234,0.2), 0 0 0 1px rgba(147,51,234,0.3);
+  border-color: rgba(147,51,234,0.4);
+}
+.brand-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.brand-card:hover::after { opacity: 1; }
+.brand-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(147,51,234,0.15);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.brand-card:hover .brand-icon {
+  background: rgba(147,51,234,0.25);
+  box-shadow: 0 0 20px rgba(147,51,234,0.3);
+}
+.brand-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.brand-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent-light);
+  margin-bottom: 1rem;
+}
+.brand-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-3);
+  font-weight: 300;
+}
+.brand-tag {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(147,51,234,0.1);
+  border: 1px solid rgba(147,51,234,0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-top: 1.25rem;
+}
+
+/* ─── ÜBER UNS ───────────────────────────────────── */
+.about-section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-card-main {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+.about-card-main::before {
+  content: 'NC';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0.06;
+  position: absolute;
+  bottom: -1.5rem;
+  right: -0.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
+.about-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.about-stat {
+  background: var(--bg-3);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  margin-top: 0.25rem;
+  font-weight: 300;
+}
+.about-float {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  animation: floatEl 4s ease-in-out infinite;
+}
+@keyframes floatEl {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.about-float-icon {
+  width: 36px; height: 36px;
+  background: rgba(147,51,234,0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.about-float-text { font-size: 0.78rem; color: var(--text-2); }
+.about-float-text strong { display: block; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text); }
+
+.about-text .section-label { margin-bottom: 1rem; }
+.about-text .section-title { margin-bottom: 1.5rem; }
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-2);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+/* ─── DIVIDER ─────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+/* ─── FAQ ─────────────────────────────────────────── */
+.faq-section {
+  padding: 60px 0;
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.faq-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.faq-tab {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  padding: 0.45rem 1.2rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.faq-tab.active, .faq-tab:hover {
+  color: var(--accent-light);
+  background: rgba(147,51,234,0.1);
+  border-color: var(--border);
+}
+.faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.faq-item {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s;
+}
+.faq-item.open { border-color: var(--border); }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  gap: 1rem;
+  user-select: none;
+}
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(147,51,234,0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, transform 0.4s var(--transition);
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1;
+}
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--transition), padding 0.3s;
+  padding: 0 1.5rem;
+}
+.faq-a p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-3);
+  font-weight: 300;
+  padding-bottom: 1.25rem;
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-top: 0;
+}
+.faq-category {
+  display: none;
+}
+.faq-category.active { display: block; }
+
+/* ─── CONTACT ─────────────────────────────────────── */
+.contact-section {
+  padding: 60px 0;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+.contact-info .section-title { margin-bottom: 1rem; }
+.contact-info p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-3);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.25s;
+  color: var(--text);
+}
+.contact-link:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateX(6px);
+}
+.contact-link-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(147,51,234,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-link-text { font-size: 0.9rem; font-weight: 400; }
+.contact-link-sub { font-size: 0.75rem; color: var(--text-3); margin-top: 0.1rem; font-weight: 300; }
+.contact-cta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(16px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(147,51,234,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-cta h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+.contact-cta h3 em { font-style: italic; color: var(--accent-light); }
+.contact-cta p {
+  font-size: 0.9rem;
+  color: var(--text-3);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.contact-cta .btn-primary { position: relative; }
+.contact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 1.25rem;
+  position: relative;
+}
+.contact-badge svg {
+  width: 12px; height: 12px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ─── WARTUNGEN PAGE ─────────────────────────────── */
+.inner-page {
+  display: none;
+  padding-top: 120px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+.inner-page.active { display: block; }
+.inner-hero {
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 60px;
+}
+.inner-content {
+  padding-bottom: 60px;
+}
+.content-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.content-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+.content-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-3);
+  font-weight: 300;
+}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border-soft);
+  padding: 36px 0 24px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+.footer-brand .nav-logo {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: inline-flex;
+}
+.footer-brand p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-3);
+  font-weight: 300;
+  max-width: 260px;
+}
+.footer-col h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.6rem; }
+.footer-col ul li a {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--accent-light); }
+.footer-bottom {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  font-weight: 300;
+}
+.footer-copy span { color: var(--accent-light); }
+.footer-version {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  background: rgba(147,51,234,0.08);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── NOISE OVERLAY ──────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
+
+/* ─── SCROLLBAR ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(147,51,234,0.4); }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .brands-grid { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-float { display: none; }
+  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hero-title { font-size: clamp(2.8rem, 12vw, 5rem); }
+}
+
+/* ─── PAGE TRANSITIONS ───────────────────────────── */
+.page { display: block; }
+.page.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- ─── NAVIGATION ─────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" onclick="showPage('home')">
+      <span class="logo-dot"></span>
+      NOVA CORP
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" onclick="showPage('home')">Start</a></li>
+      <li><a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); return false;">Kontakt</a></li>
+      <li><a href="#" onclick="showPage('team'); return false;">Unser Team</a></li>
+      <li><a href="#" onclick="showPage('geschichte'); return false;">Unsere Geschichte</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" title="Dark/Light Mode wechseln">
+        <span class="theme-icon sun">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </span>
+        <span class="theme-icon moon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+      </button>
+      <a href="tel:01759430897" class="nav-cta">
+        Anrufen
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="showPage('home'); toggleMenu()">Start <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); toggleMenu(); return false;">Kontakt <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="#" onclick="showPage('team'); toggleMenu(); return false;">Unser Team <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="#" onclick="showPage('geschichte'); toggleMenu(); return false;">Unsere Geschichte <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- HOME PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-home" class="page">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Drei Marken. Eine Vision.</div>
+      <h1 class="hero-title">
+        <em>Nova</em>
+        <span class="line-2">Corp</span>
+      </h1>
+      <p class="hero-sub">Markenvielfalt & individuelle Designs – vereint unter einem Dach. Mode, Grafikdesign und Entwicklung auf höchstem Niveau.</p>
+      <div class="hero-actions">
+        <a href="tel:01759430897" class="btn-primary">
+          Design buchen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a href="#brands" class="btn-secondary">
+          Unsere Marken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="brands-section" id="brands">
+    <div class="container">
+      <div class="brands-header reveal">
+        <div class="section-label">Unsere Marken</div>
+        <h2 class="section-title">Drei Säulen. <em>Grenzenlose</em> Möglichkeiten.</h2>
+      </div>
+      <div class="brands-grid">
+        <div class="brand-card reveal">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="brand-name">Nova Origin</div>
+          <div class="brand-subtitle">Fashion & Style</div>
+          <p class="brand-desc">Unsere Modemarke, die Stil und Innovation verkörpert und Ihnen ermöglicht, sich von der Masse abzuheben. Made in Germany, designed for the world.</p>
+          <span class="brand-tag">Fashion</span>
+        </div>
+        <div class="brand-card reveal">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div class="brand-name">Nova Graphics</div>
+          <div class="brand-subtitle">Design & Kreativität</div>
+          <p class="brand-desc">Unsere Grafikdesign-Agentur bietet kreative Lösungen, die nicht nur ins Auge fallen, sondern Ihre Botschaft klar und überzeugend vermitteln.</p>
+          <span class="brand-tag">Design</span>
+        </div>
+        <div class="brand-card reveal">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-name">Nova Development</div>
+          <div class="brand-subtitle">Technik & Entwicklung</div>
+          <p class="brand-desc">Das unverzichtbare technologische Rückgrat hinter all unseren Erfolgen. Unermüdlicher Einsatz und Expertise, die unsere Visionen Wirklichkeit werden lässt.</p>
+          <span class="brand-tag">Development</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÜBER UNS -->
+  <section class="about-section" id="ueber-uns">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-visual reveal">
+          <div class="about-card-main">
+            <div class="section-label">Über uns</div>
+            <div class="about-stat-grid">
+              <div class="about-stat">
+                <div class="stat-num">3</div>
+                <div class="stat-label">Starke Marken</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-num">EU</div>
+                <div class="stat-label">Gegründet in Europa</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-num">∞</div>
+                <div class="stat-label">Kreativität</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-num">1–3</div>
+                <div class="stat-label">Wochen Lieferzeit</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-float">
+            <span class="about-float-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div class="about-float-text">
+              <strong>Nova Corp</strong>
+              Qualität ohne Kompromisse
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">Wer wir sind</div>
+          <h2 class="section-title">Ein starker <em>Zusammenschluss</em></h2>
+          <p>Wir sind Nova Corp, ein leistungsstarker Zusammenschluss, der Ihnen drei herausragende Marken unter einem Dach bietet.</p>
+          <p>Lassen Sie sich von Nova Origin begeistern – unserer Modemarke, die Stil und Innovation verkörpert. Entdecken Sie Nova Graphics, unsere Grafikdesign-Agentur mit kreativen Lösungen, die überzeugen. Und hinter all dem steht Nova Development – das engagierte Team, das all unsere Visionen Wirklichkeit werden lässt.</p>
+          <p>Treten Sie mit uns in Kontakt und werden Sie Teil unserer Geschichte – denn gemeinsam können wir Großes erreichen!</p>
+          <div style="margin-top:2rem;">
+            <a href="tel:01759430897" class="btn-primary">
+              Kontakt aufnehmen
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-label" style="justify-content:center">FAQ</div>
+        <h2 class="section-title">Häufig gestellte <em>Fragen</em></h2>
+      </div>
+      <div class="faq-tabs reveal">
+        <button class="faq-tab active" onclick="switchTab('all')">Alle</button>
+        <button class="faq-tab" onclick="switchTab('design')">Design</button>
+        <button class="faq-tab" onclick="switchTab('development')">Development</button>
+        <button class="faq-tab" onclick="switchTab('fashion')">Fashion</button>
+      </div>
+      <div class="faq-list" id="faqList">
+
+        <!-- ALL / DESIGN -->
+        <div class="faq-item" data-cat="design">
+          <div class="faq-q">Wie viel kosten Ihre Designs?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+          <div class="faq-a"><p>Unsere Designs sind ausgesprochen kostengünstig und viele davon sind kostenlos erschwinglich. Sprechen Sie uns an – wir finden gemeinsam die passende Lösung für Ihr Budget.</p></div>
+        </div>
+        <div class="faq-item" data-cat="design">
+          <div class="faq-q">In welche Richtung gehen eure Designs?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+          <div class="faq-a"><p>Sagen Sie uns, in welche Richtung Ihr Design gehen soll, und wir setzen es professionell um. Ob minimalistisch, modern, klassisch oder avantgardistisch – wir passen uns Ihrer Vision an.</p></div>
+        </div>
+
+        <!-- DEVELOPMENT -->
+        <div class="faq-item" data-cat="development">
+          <div class="faq-q">Für wen ist Nova Development?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+          <div class="faq-a"><p>Hauptsächlich ist Nova Development (ND) nur für Nova Corp vorgesehen, doch auch Partner können nach Vereinbarung von ND profitieren. Sprechen Sie uns bei Interesse gerne an.</p></div>
+        </div>
+
+        <!-- FASHION -->
+        <div class="faq-item" data-cat="fashion">
+          <div class="faq-q">Wann kann ich mit der Ankunft meines Pakets rechnen?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+          <div class="faq-a"><p>Unsere Bestellungen benötigen in der Regel zwischen 1 und 3 Wochen, da die Produkte erst nach der Bestellung in Druck gehen. Die individuelle Fertigung garantiert dabei höchste Qualität.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="kontakt">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <div class="section-label">Kontakt</div>
+          <h2 class="section-title">Benötigen Sie ein <em>individuelleres</em> Design?</h2>
+          <p>Wir freuen uns darauf, Ihre Vision umzusetzen. Kontaktieren Sie uns jetzt und erfahren Sie, wie Nova Corp Ihnen helfen kann.</p>
+          <div class="contact-links">
+            <a href="tel:01759430897" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.16h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.75a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-link-text">0175 9430897</div>
+                <div class="contact-link-sub">Mo–Sa, 16–23 Uhr</div>
+              </div>
+            </a>
+            <a id="mail-contact-link" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-link-text" id="mail-contact-text"></div>
+                <div class="contact-link-sub">Antwort innerhalb 24h</div>
+              </div>
+            </a>
+            <a href="https://www.google.com/maps/place/Deutschland/" target="_blank" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-link-text">Standort Deutschland</div>
+                <div class="contact-link-sub">Nova Corp</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-cta reveal">
+          <h3>Jetzt <em>Design</em> buchen</h3>
+          <p>Professionelle Designs, günstige Preise und ein engagiertes Team – was warten Sie noch?</p>
+          <a href="tel:01759430897" class="btn-primary">
+            Design buchen
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <div class="contact-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Gegründet in Deutschland · Nova Corp
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- WARTUNGEN PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-wartungen" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Wartungen</div>
+        <h1 class="section-title">Service & <em>Wartungen</em></h1>
+        <p style="font-size:0.95rem;color:var(--text-3);margin-top:1rem;max-width:600px;font-weight:300;line-height:1.7;">Zuverlässige Wartungs- und Support-Dienste durch Nova Development.</p>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Technischer Support</h3>
+          <p>Nova Development übernimmt alle technischen Wartungsaufgaben für Nova Corp und Partner. Schnelle Reaktionszeiten und professionelle Lösungen sind garantiert.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Partner-Wartungen</h3>
+          <p>Auch externe Partner können nach Vereinbarung von unserem Wartungsservice profitieren. Kontaktieren Sie uns für ein individuelles Angebot.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Kontakt</h3>
+          <p>Für Wartungsanfragen erreichen Sie uns unter: <a id="mail-wartungen" style="color:var(--accent-light);"></a> oder telefonisch unter <a href="tel:01759430897" style="color:var(--accent-light);">0175 9430897</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- NOVA SURF PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-nova-surf" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Nova Surf</div>
+        <h1 class="section-title">Nova <em>Surf</em></h1>
+        <p style="font-size:0.95rem;color:var(--text-3);margin-top:1rem;max-width:600px;font-weight:300;line-height:1.7;">Entdecken Sie Nova Surf – das neueste Projekt der Nova Corp Familie.</p>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Über Nova Surf</h3>
+          <p>Nova Surf ist eines der spannenden Projekte von Nova Corp. Weitere Informationen folgen in Kürze. Bleiben Sie gespannt auf das, was wir als nächstes enthüllen werden.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Updates erhalten</h3>
+          <p>Für aktuelle Neuigkeiten zu Nova Surf kontaktieren Sie uns unter <a id="mail-novasurf" style="color:var(--accent-light);"></a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- TEAM PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-team" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Team</div>
+        <h1 class="section-title">Unser <em>Team</em></h1>
+        <p style="font-size:0.95rem;color:var(--text-3);margin-top:1rem;max-width:600px;font-weight:300;line-height:1.7;">Die Menschen hinter Nova Corp – leidenschaftlich, kreativ, unermüdlich.</p>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Nova Corp Team</h3>
+          <p>Unser Team besteht aus engagierten Experten aus den Bereichen Mode, Grafikdesign und Softwareentwicklung. Gemeinsam arbeiten wir daran, Ihre Visionen Wirklichkeit werden zu lassen.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Nova Development</h3>
+          <p>Das Entwicklungsteam agiert oft im Hintergrund – aber ohne ihren unermüdlichen Einsatz und ihre Expertise wären all unsere Erfolge undurchführbar.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Teil des Teams werden?</h3>
+          <p>Sie möchten ein Teil von Nova Corp werden? Dann melden Sie sich gerne bei uns: <a id="mail-team" style="color:var(--accent-light);"></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- GESCHICHTE PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-geschichte" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Geschichte</div>
+        <h1 class="section-title">Unsere <em>Geschichte</em></h1>
+        <p style="font-size:0.95rem;color:var(--text-3);margin-top:1rem;max-width:600px;font-weight:300;line-height:1.7;">Von einer Idee zu einer Unternehmensgruppe mit drei starken Marken.</p>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Die Entstehung</h3>
+          <p>Nova Corp entstand aus der Vision, Kreativität, Technologie und Mode unter einem Dach zu vereinen. Was als kleine Initiative begann, wuchs schnell zu einem leistungsstarken Zusammenschluss dreier starker Marken heran.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Heute</h3>
+          <p>Heute steht Nova Corp für Qualität, Innovation und individuelle Kreativität. Mit Nova Origin, Nova Graphics und Nova Development decken wir ein breites Spektrum an kreativen Dienstleistungen ab – allesamt gegründet und verwurzelt in Deutschland.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Morgen</h3>
+          <p>Unsere Geschichte ist noch längst nicht geschrieben. Mit neuen Projekten und weiteren Innovationen schreiben wir sie täglich weiter. Werden Sie Teil dieser Geschichte!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- IMPRESSUM PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-impressum" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Rechtliches</div>
+        <h1 class="section-title"><em>Impressum</em></h1>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Angaben gemäß § 5 TMG</h3>
+          <p>Nova Corp<br>Deutschland<br>
+            <span style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.4rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light);flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.16h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.75a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              0175 9430897
+            </span><br>
+            <span style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.4rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light);flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a id="mail-impressum" style="color:var(--accent-light);"></a>
+            </span>
+          </p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Haftungsausschluss</h3>
+          <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Urheberrecht</h3>
+          <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- DATENSCHUTZ PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-datenschutz" class="page hidden">
+  <div class="inner-page active">
+    <div class="container">
+      <div class="inner-hero reveal">
+        <div class="section-label">Rechtliches</div>
+        <h1 class="section-title"><em>Datenschutz</em></h1>
+      </div>
+      <div class="inner-content">
+        <div class="content-card reveal">
+          <h3>Datenschutzerklärung</h3>
+          <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Kontaktformular</h3>
+          <p>Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+        </div>
+        <div class="content-card reveal">
+          <h3>Ihre Rechte</h3>
+          <p>Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Bei Fragen wenden Sie sich bitte an <a id="mail-datenschutz" style="color:var(--accent-light);"></a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo" onclick="showPage('home')">
+          <span class="logo-dot"></span>
+          NOVA CORP
+        </a>
+        <p>Drei herausragende Marken unter einem Dach. Mode, Design und Entwicklung – gegründet in Deutschland.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Marken</h4>
+        <ul>
+          <li><a href="#">Nova Origin</a></li>
+          <li><a href="#">Nova Graphics</a></li>
+          <li><a href="#">Nova Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home" onclick="showPage('home')">Start</a></li>
+          <li><a href="#" onclick="showPage('team'); return false;">Unser Team</a></li>
+          <li><a href="#" onclick="showPage('geschichte'); return false;">Unsere Geschichte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('impressum'); return false;">Impressum</a></li>
+          <li><a href="#" onclick="showPage('datenschutz'); return false;">Datenschutzpolitik</a></li>
+          <li><a id="mail-footer" style="cursor:pointer;">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 <span>NOVA CORP</span>. Alle Rechte vorbehalten.
+      </div>
+      <div class="footer-version">Project-Nova II</div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── THEME ────────────────────────────────────────
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('nova-theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('nova-theme', next);
+});
+
+// ─── MOBILE MENU ──────────────────────────────────
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn  = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.setAttribute('aria-label', btn.classList.contains('open') ? 'Menü schließen' : 'Menü öffnen');
+}
+document.getElementById('hamburger').addEventListener('click', toggleMenu);
+
+// ─── PAGE NAVIGATION ──────────────────────────────
+const pages = ['home','wartungen','nova-surf','team','geschichte','impressum','datenschutz'];
+function showPage(id) {
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) {
+      if (p === id) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    }
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('hamburger').setAttribute('aria-label', 'Menü öffnen');
+
+  if (id !== 'home') {
+    // For sub-pages: reset then stagger-reveal all items
+    const activePage = document.getElementById('page-' + id);
+    if (activePage) {
+      const items = activePage.querySelectorAll('.reveal');
+      items.forEach(el => el.classList.remove('visible'));
+      items.forEach((el, i) => {
+        el.style.transitionDelay = '0s';
+        setTimeout(() => {
+          el.style.transitionDelay = (i * 0.08) + 's';
+          el.classList.add('visible');
+        }, 50 + i * 80);
+      });
+    }
+  } else {
+    observeReveal();
+  }
+}
+
+// ─── SCROLL REVEAL ────────────────────────────────
+function observeReveal() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.05) + 's';
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('#page-home .reveal:not(.visible)').forEach(el => io.observe(el));
+}
+observeReveal();
+window.addEventListener('scroll', observeReveal);
+
+// ─── FAQ ──────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.removeClass('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+function switchTab(cat) {
+  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.faq-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// ─── NAV SCROLL EFFECT ────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 20) {
+    nav.style.boxShadow = '0 4px 40px rgba(0,0,0,0.25)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// ─── EMAIL LINKS (Cloudflare-safe) ────────────────
+(function() {
+  const e = 'admin' + '\u0040' + 'nova-corp' + '.' + 'de';
+  const h = 'mai' + 'lto:' + e;
+  // Links that show the email address as text
+  ['mail-impressum','mail-datenschutz','mail-team','mail-wartungen','mail-novasurf'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.href = h; el.textContent = e; }
+  });
+  // Contact section: the <a> wraps the whole card, text is in a child div
+  const cl = document.getElementById('mail-contact-link');
+  const ct = document.getElementById('mail-contact-text');
+  if (cl) cl.href = h;
+  if (ct) ct.textContent = e;
+  // Footer link: just sets href, keeps "Kontakt" as label
+  const fl = document.getElementById('mail-footer');
+  if (fl) fl.href = h;
+})();
+</script>
+</body>
+</html>
