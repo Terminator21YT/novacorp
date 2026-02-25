@@ -12,7 +12,7 @@
      Dateinamen unten anpassen.
 ──────────────────────────────────────────────────── -->
 <link rel="icon" type="image/x-icon"  href="favicon.ico">
-<link rel="icon" type="image/png"     href="favicon32.png" sizes="32x32">
+<link rel="icon" type="image/png"     href="favicon.png" sizes="32x32">
 <link rel="apple-touch-icon"          href="favicon.png" sizes="180x180">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -1170,7 +1170,63 @@ body::after {
   .hero-title { font-size: clamp(2.8rem, 12vw, 5rem); }
 }
 
-/* ─── PAGE TRANSITIONS ───────────────────────────── */
+/* ─── CONTACT FORM ───────────────────────────────── */
+.cf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+.cf-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.cf-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  text-align: left;
+}
+.cf-input {
+  background: var(--bg-3);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  width: 100%;
+  resize: none;
+}
+.cf-input::placeholder { color: var(--text-3); }
+.cf-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(147,51,234,0.12);
+  background: var(--surface);
+}
+.cf-textarea { min-height: 110px; line-height: 1.6; }
+.cf-msg {
+  margin-top: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+}
+.cf-msg.success {
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.25);
+  color: #4ade80;
+}
+.cf-msg.error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #f87171;
+}
+@media (max-width: 480px) {
+  .cf-grid { grid-template-columns: 1fr; }
+}
 .page { display: block; }
 .page.hidden { display: none; }
 </style>
@@ -1265,7 +1321,7 @@ body::after {
         <h2 class="section-title">Drei Säulen. <em>Grenzenlose</em> Möglichkeiten.</h2>
       </div>
       <div class="brands-grid">
-        <div class="brand-card reveal">
+        <a href="https://novaorigin.de" target="_blank" rel="noopener" class="brand-card reveal" style="text-decoration:none;color:inherit;display:block;">
           <div class="brand-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
@@ -1273,12 +1329,12 @@ body::after {
           <div class="brand-subtitle">Fashion & Style</div>
           <p class="brand-desc">Unsere Modemarke, die Stil und Innovation verkörpert und Ihnen ermöglicht, sich von der Masse abzuheben. Made in Germany, designed for the world.</p>
           <span class="brand-tag">Fashion</span>
-        </div>
+        </a>
         <div class="brand-card reveal">
           <div class="brand-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
-          <div class="brand-name">Nova Graphics</div>
+          <div class="brand-name">Nova Prism</div>
           <div class="brand-subtitle">Design & Kreativität</div>
           <p class="brand-desc">Unsere Grafikdesign-Agentur bietet kreative Lösungen, die nicht nur ins Auge fallen, sondern Ihre Botschaft klar und überzeugend vermitteln.</p>
           <span class="brand-tag">Design</span>
@@ -1336,7 +1392,7 @@ body::after {
           <div class="section-label">Wer wir sind</div>
           <h2 class="section-title">Ein starker <em>Zusammenschluss</em></h2>
           <p>Wir sind Nova Corp, ein leistungsstarker Zusammenschluss, der Ihnen drei herausragende Marken unter einem Dach bietet.</p>
-          <p>Lassen Sie sich von Nova Origin begeistern – unserer Modemarke, die Stil und Innovation verkörpert. Entdecken Sie Nova Graphics, unsere Grafikdesign-Agentur mit kreativen Lösungen, die überzeugen. Und hinter all dem steht Nova Development – das engagierte Team, das all unsere Visionen Wirklichkeit werden lässt.</p>
+          <p>Lassen Sie sich von Nova Origin begeistern – unserer Modemarke, die Stil und Innovation verkörpert. Entdecken Sie Nova Prism, unsere Grafikdesign-Agentur mit kreativen Lösungen, die überzeugen. Und hinter all dem steht Nova Development – das engagierte Team, das all unsere Visionen Wirklichkeit werden lässt.</p>
           <p>Treten Sie mit uns in Kontakt und werden Sie Teil unserer Geschichte – denn gemeinsam können wir Großes erreichen!</p>
           <div style="margin-top:2rem;">
             <a href="tel:01759430897" class="btn-primary">
@@ -1429,13 +1485,38 @@ body::after {
           </div>
         </div>
         <div class="contact-cta reveal">
-          <h3>Jetzt <em>Design</em> buchen</h3>
-          <p>Professionelle Designs, günstige Preise und ein engagiertes Team – was warten Sie noch?</p>
-          <a href="tel:01759430897" class="btn-primary">
-            Design buchen
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-          <div class="contact-badge">
+          <h3>Schreib uns <em>direkt</em></h3>
+          <p>Fülle das Formular aus – wir melden uns schnellstmöglich bei dir.</p>
+
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label class="cf-label" for="cf-vorname">Vorname</label>
+              <input class="cf-input" id="cf-vorname" type="text" placeholder="Max">
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="cf-nachname">Nachname</label>
+              <input class="cf-input" id="cf-nachname" type="text" placeholder="Mustermann">
+            </div>
+          </div>
+
+          <div class="cf-field" style="margin-top:0.85rem;">
+            <label class="cf-label" for="cf-email">E-Mail</label>
+            <input class="cf-input" id="cf-email" type="email" placeholder="deine@email.de">
+          </div>
+
+          <div class="cf-field" style="margin-top:0.85rem;">
+            <label class="cf-label" for="cf-anliegen">Anliegen</label>
+            <textarea class="cf-input cf-textarea" id="cf-anliegen" placeholder="Wie können wir dir helfen?"></textarea>
+          </div>
+
+          <button class="btn-primary cf-submit" id="cf-send" style="width:100%;justify-content:center;margin-top:1.25rem;">
+            Nachricht senden
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+
+          <div id="cf-msg" class="cf-msg" style="display:none;"></div>
+
+          <div class="contact-badge" style="margin-top:1rem;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Gegründet in Deutschland · Nova Corp
           </div>
@@ -1547,7 +1628,7 @@ body::after {
         </div>
         <div class="content-card reveal">
           <h3>Heute</h3>
-          <p>Heute steht Nova Corp für Qualität, Innovation und individuelle Kreativität. Mit Nova Origin, Nova Graphics und Nova Development decken wir ein breites Spektrum an kreativen Dienstleistungen ab – allesamt gegründet und verwurzelt in Deutschland.</p>
+          <p>Heute steht Nova Corp für Qualität, Innovation und individuelle Kreativität. Mit Nova Origin, Nova Prism und Nova Development decken wir ein breites Spektrum an kreativen Dienstleistungen ab – allesamt gegründet und verwurzelt in Deutschland.</p>
         </div>
         <div class="content-card reveal">
           <h3>Morgen</h3>
@@ -1709,7 +1790,7 @@ body::after {
         <h4>Marken</h4>
         <ul>
           <li><a href="#">Nova Origin</a></li>
-          <li><a href="#">Nova Graphics</a></li>
+          <li><a href="#">Nova Prism</a></li>
           <li><a href="#">Nova Development</a></li>
         </ul>
       </div>
@@ -1820,7 +1901,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.removeClass('open'));
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   });
 });
@@ -1847,7 +1928,46 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ─── EMAIL LINKS (Cloudflare-safe) ────────────────
+// ─── CONTACT FORM ────────────────────────────────
+document.getElementById('cf-send').addEventListener('click', () => {
+  const vorname  = document.getElementById('cf-vorname').value.trim();
+  const nachname = document.getElementById('cf-nachname').value.trim();
+  const email    = document.getElementById('cf-email').value.trim();
+  const anliegen = document.getElementById('cf-anliegen').value.trim();
+  const msg      = document.getElementById('cf-msg');
+
+  // Validation
+  if (!vorname || !nachname || !email || !anliegen) {
+    msg.className = 'cf-msg error';
+    msg.textContent = 'Bitte alle Felder ausfüllen.';
+    msg.style.display = 'block';
+    return;
+  }
+  const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailReg.test(email)) {
+    msg.className = 'cf-msg error';
+    msg.textContent = 'Bitte eine gültige E-Mail-Adresse eingeben.';
+    msg.style.display = 'block';
+    return;
+  }
+
+  // Build mailto
+  const to      = 'adm' + 'in' + '\u0040' + 'nova-corp' + '.' + 'de';
+  const subject = encodeURIComponent('Kontaktanfrage von ' + vorname + ' ' + nachname);
+  const body    = encodeURIComponent(
+    'Name: ' + vorname + ' ' + nachname + '\n' +
+    'E-Mail: ' + email + '\n\n' +
+    'Anliegen:\n' + anliegen
+  );
+  window.location.href = 'mai' + 'lto:' + to + '?subject=' + subject + '&body=' + body;
+
+  // Success feedback
+  msg.className = 'cf-msg success';
+  msg.textContent = 'Dein E-Mail-Programm wird geöffnet. Bitte dort auf Senden klicken.';
+  msg.style.display = 'block';
+});
+
+
 (function() {
   const general  = 'contact'   + '\u0040' + 'nova-corp' + '.' + 'de';
   const imprint  = 'impressum' + '\u0040' + 'nova-corp' + '.' + 'de';
@@ -1877,4 +1997,3 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
-
