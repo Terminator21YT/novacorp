@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova Corp – Markenvielfalt & individuelle Designs</title>
+  <title>Nova Corp – Markenvielfalt &amp; Designs aus Köln</title>
+  <meta name="description" content="Nova Corp aus Köln vereint Nova Origin (Fashion), Nova Prism (Grafikdesign) und Nova Development (Tech). Entdecke Markenvielfalt, Design & Entwicklung.">
+       <meta property="og:title" content="Nova Corp – Markenvielfalt &amp; Designs aus Köln">
+  <meta property="og:description" content="Nova Corp aus Köln mit Nova Origin (Streetwear), Nova Prism (Design) und Nova Development (Tech).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nova-corp.de">
 <!-- ─── FAVICON ────────────────────────────────────────
      Ersetze "favicon.ico" mit deiner eigenen Datei.
      Unterstützte Formate: .ico, .png, .svg
@@ -1795,12 +1800,12 @@ body::after {
 <!-- ─── NAVIGATION ─────────────────────────────────── -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo" onclick="showPage('home')">
+    <a href="#" class="nav-logo" onclick="showPage('home'); return false;">
       <span class="logo-dot"></span>
       NOVA CORP
     </a>
     <ul class="nav-links">
-      <li><a href="#home" onclick="showPage('home')">Start</a></li>
+      <li><a href="#" onclick="showPage('home'); return false;">Start</a></li>
       <li><a href="#" onclick="showPage('nova-prism'); return false;">Nova Prism</a></li>
       <li><a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); return false;">Kontakt</a></li>
       <li><a href="#" onclick="showPage('team'); return false;">Unser Team</a></li>
@@ -1832,7 +1837,7 @@ body::after {
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#home" onclick="showPage('home'); toggleMenu()">Start <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="#" onclick="showPage('home'); toggleMenu(); return false;">Start <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#" onclick="showPage('nova-prism'); toggleMenu(); return false;">Nova Prism <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); toggleMenu(); return false;">Kontakt <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#" onclick="showPage('team'); toggleMenu(); return false;">Unser Team <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -1849,19 +1854,30 @@ body::after {
     <div class="hero-grid"></div>
     <div class="hero-content">
       <div class="hero-badge">Drei Marken. Eine Vision.</div>
+
       <h1 class="hero-title">
         <em>Nova</em>
         <span class="line-2">Corp</span>
       </h1>
-      <p class="hero-sub">Markenvielfalt & individuelle Designs – vereint unter einem Dach. Mode, Grafikdesign und Entwicklung auf höchstem Niveau.</p>
+
+      <p class="hero-sub">
+        Nova Corp aus Köln vereint Nova Origin (Streetwear Fashion), Nova Prism (Grafikdesign)
+        und Nova Development (Tech) unter einem Dach – Markenvielfalt & individuelle Designs auf höchstem Niveau.
+      </p>
+
       <div class="hero-actions">
         <a href="tel:01759430897" class="btn-primary">
           Design buchen
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
         </a>
         <a href="#brands" class="btn-secondary">
           Unsere Marken
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </a>
       </div>
     </div>
@@ -1888,7 +1904,7 @@ body::after {
           <p class="brand-desc">Unsere Modemarke, die Stil und Innovation verkörpert und Ihnen ermöglicht, sich von der Masse abzuheben. Made in Germany, designed for the world.</p>
           <span class="brand-tag">Fashion</span>
         </a>
-        <a href="https://discord.gg/j8ynhMA6U6" target="_blank" rel="noopener" class="brand-card reveal" style="text-decoration:none;color:inherit;display:block;">
+        <a href="#" onclick="showPage('nova-prism'); return false;" class="brand-card reveal" style="text-decoration:none;color:inherit;cursor:pointer;display:block;">
           <div class="brand-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
@@ -2347,7 +2363,7 @@ body::after {
             <strong>Nova Corp</strong><br>
             Giuseppe Antonio Majica (Geschäftsführer)<br>
             Pater-Dionysius-Str. 41<br>
-            50739 Köln-Chorweiler<br>
+            50767 Köln-Chorweiler<br>
             Deutschland
           </p>
         </div>
@@ -2371,7 +2387,7 @@ body::after {
           <p>
             Giuseppe Antonio Majica<br>
             Pater-Dionysius-Str. 41<br>
-            50739 Köln-Chorweiler
+            50767 Köln-Chorweiler
           </p>
         </div>
 
@@ -2471,7 +2487,7 @@ body::after {
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="nav-logo" onclick="showPage('home')">
+        <a href="#" class="nav-logo" onclick="showPage('home'); return false;">
           <span class="logo-dot"></span>
           NOVA CORP
         </a>
@@ -2488,7 +2504,7 @@ body::after {
       <div class="footer-col">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="#home" onclick="showPage('home')">Start</a></li>
+          <li><a href="#" onclick="showPage('home'); return false;">Start</a></li>
           <li><a href="#" onclick="showPage('team'); return false;">Unser Team</a></li>
           <li><a href="#" onclick="showPage('geschichte'); return false;">Unsere Geschichte</a></li>
         </ul>
@@ -2570,7 +2586,7 @@ function showPage(id) {
       else { el.classList.add('hidden'); }
     }
   });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(function(){ window.scrollTo({ top: 0, behavior: 'instant' }); }, 10);
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
   if (id === 'nova-prism') {
@@ -2758,7 +2774,7 @@ document.querySelectorAll('#page-nova-prism .np-card').forEach(function(card) {
 
 // ─── EMAIL LINKS (Cloudflare-safe) ────────────────
 (function() {
-  var general  = 'contact'   + '\u0040' + 'nova-corp' + '.' + 'de';
+  var general  = 'admin'   + '\u0040' + 'nova-corp' + '.' + 'de';
   var imprint  = 'impressum' + '\u0040' + 'nova-corp' + '.' + 'de';
   var hGeneral = 'mai' + 'lto:' + general;
   var hImprint = 'mai' + 'lto:' + imprint;
@@ -2768,8 +2784,8 @@ document.querySelectorAll('#page-nova-prism .np-card').forEach(function(card) {
     var el = document.getElementById(id);
     if (el) { el.href = hGeneral; el.textContent = general; }
   });
-  var cl = document.getElementById('mail-contact-link');
-  var ct = document.getElementById('mail-contact-text');
+  var cl = document.getElementById('mail-admin-link');
+  var ct = document.getElementById('mail-admin-text');
   if (cl) cl.href = hGeneral;
   if (ct) ct.textContent = general;
   var fl = document.getElementById('mail-footer');
@@ -2778,3 +2794,4 @@ document.querySelectorAll('#page-nova-prism .np-card').forEach(function(card) {
 </script>
 </body>
 </html>
+
