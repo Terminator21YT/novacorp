@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova Corp – Markenvielfalt & Vision</title>
+<title>Nova Corp – Markenvielfalt & individuelle Designs</title>
 <!-- ─── FAVICON ────────────────────────────────────────
      Ersetze "favicon.ico" mit deiner eigenen Datei.
      Unterstützte Formate: .ico, .png, .svg
@@ -1229,6 +1229,493 @@ body::after {
 }
 .page { display: block; }
 .page.hidden { display: none; }
+
+/* ─── NOVA PRISM PAGE ────────────────────────────── */
+.np-hero {
+  padding-top: 100px;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.np-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(107,33,168,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.np-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 40px 0;
+}
+.np-hero-text .section-label { margin-bottom: 1rem; }
+
+/* Animated prism visual */
+.np-hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.np-prism-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.np-prism {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  animation: prismSpin 12s linear infinite;
+  transform-style: preserve-3d;
+}
+@keyframes prismSpin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+.np-prism-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  opacity: 0.8;
+}
+.np-f1 { background: linear-gradient(135deg,#7c3aed,#c084fc); transform: rotate(0deg); }
+.np-f2 { background: linear-gradient(135deg,#4c1d95,#9333ea); transform: rotate(60deg); opacity: 0.6; }
+.np-f3 { background: linear-gradient(135deg,#3b0764,#7c3aed); transform: rotate(120deg); opacity: 0.4; }
+.np-glow-ring {
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 1px solid rgba(192,132,252,0.25);
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%,100% { transform: scale(1); opacity: 0.4; box-shadow: 0 0 30px rgba(147,51,234,0.2); }
+  50% { transform: scale(1.08); opacity: 0.8; box-shadow: 0 0 60px rgba(147,51,234,0.4); }
+}
+
+/* Services */
+.np-services-header { text-align: center; margin-bottom: 3rem; }
+.np-services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.np-service-card {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.np-service-card:hover {
+  border-color: var(--border);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(147,51,234,0.15);
+}
+.np-service-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: rgba(147,51,234,0.1);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-light);
+  margin-bottom: 1.25rem;
+}
+.np-service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+.np-service-card p {
+  font-size: 0.83rem;
+  color: var(--text-3);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Gallery grid */
+.np-gallery-header { text-align: center; }
+.np-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 1.25rem;
+}
+.np-card {
+  border-radius: 20px;
+  border: 1px solid var(--border-soft);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, border-color 0.3s;
+}
+.np-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(147,51,234,0.3);
+  border-color: var(--border);
+}
+.np-card-inner {
+  position: absolute;
+  inset: 0;
+  background: var(--np-bg, linear-gradient(135deg,#3b0764,#9333ea));
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.np-card:hover .np-card-inner { transform: scale(1.05); }
+.np-card-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,0.025) 12px,rgba(255,255,255,0.025) 24px);
+}
+.np-card-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transform: translateY(4px);
+  opacity: 0;
+  transition: transform 0.35s, opacity 0.35s;
+}
+.np-card:hover .np-card-label { transform: translateY(0); opacity: 1; }
+.np-card-wide { grid-column: span 2; }
+.np-card-tall { grid-row: span 2; }
+
+/* CTA block */
+.np-cta {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.np-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(147,51,234,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Scroll fade-in */
+.np-fade-in {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.np-fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .np-hero-inner { grid-template-columns: 1fr; }
+  .np-hero-visual { display: none; }
+  .np-services { grid-template-columns: repeat(2,1fr); }
+  .np-grid { grid-template-columns: repeat(2,1fr); }
+  .np-card-tall { grid-row: span 1; }
+}
+@media (max-width: 550px) {
+  .np-services { grid-template-columns: 1fr; }
+  .np-grid { grid-template-columns: 1fr; }
+  .np-card-wide { grid-column: span 1; }
+}
+
+/* ─── COOKIE BADGE POPUP ─────────────────────────── */
+.cookie-badge {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  transform: translateY(120px) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease;
+}
+.cookie-badge.show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+.cookie-badge-inner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.25rem 1.4rem;
+  width: 320px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(147,51,234,0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+}
+.cookie-badge-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), transparent);
+}
+.cookie-badge-top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+.cookie-badge-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(147,51,234,0.12);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-light);
+}
+.cookie-badge-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.cookie-badge-sub {
+  font-size: 0.72rem;
+  color: var(--text-3);
+  font-weight: 300;
+  margin-top: 0.15rem;
+}
+.cookie-badge-text {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  line-height: 1.55;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.cookie-badge-text a { color: var(--accent-light); text-decoration: none; }
+.cookie-badge-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+.cb-accept {
+  flex: 1;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(147,51,234,0.4);
+}
+.cb-accept:hover { background: var(--purple-2); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(147,51,234,0.55); }
+.cb-decline {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-3);
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  padding: 0.55rem 0.9rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.cb-decline:hover { color: var(--text); border-color: var(--border); }
+
+.gallery-section {
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  min-height: 540px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 60px 0;
+  align-items: center;
+}
+.gallery-track {
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+}
+.gallery-reel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: reelDown 30s linear infinite;
+}
+.reel-up { animation: reelUp 24s linear infinite; }
+@keyframes reelDown { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+@keyframes reelUp   { 0%{transform:translateY(-50%)} 100%{transform:translateY(0)} }
+.gallery-item {
+  width: 100%;
+  height: 130px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gi-bg, linear-gradient(135deg,#3b0764,#7c3aed));
+  opacity: 0.85;
+}
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(255,255,255,0.03) 10px,rgba(255,255,255,0.03) 20px);
+}
+.gi-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  z-index: 1;
+}
+.gi-1{--gi-bg:linear-gradient(135deg,#3b0764,#7c3aed)}
+.gi-2{--gi-bg:linear-gradient(135deg,#1e1b4b,#6d28d9)}
+.gi-3{--gi-bg:linear-gradient(135deg,#4c1d95,#a855f7)}
+.gi-4{--gi-bg:linear-gradient(135deg,#2e1065,#9333ea)}
+.gi-5{--gi-bg:linear-gradient(135deg,#581c87,#c084fc)}
+.gi-6{--gi-bg:linear-gradient(135deg,#1a0533,#7e22ce)}
+.gi-7{--gi-bg:linear-gradient(135deg,#0f0a1e,#6b21a8)}
+.gi-8{--gi-bg:linear-gradient(135deg,#1e0a3c,#9333ea)}
+.gi-9{--gi-bg:linear-gradient(135deg,#2d0a4e,#a855f7)}
+.gi-10{--gi-bg:linear-gradient(135deg,#150728,#7c3aed)}
+.gi-11{--gi-bg:linear-gradient(135deg,#3b0764,#c084fc)}
+.gi-12{--gi-bg:linear-gradient(135deg,#1a0533,#8b5cf6)}
+.gallery-center {
+  text-align: center;
+  padding: 0 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+.gallery-center .section-label { justify-content: center; margin-bottom: 1rem; }
+.gallery-center .section-title { margin-bottom: 1.25rem; }
+.gallery-desc {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-3);
+  font-weight: 300;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+}
+@media (max-width: 800px) {
+  .gallery-section { grid-template-columns: 1fr; padding: 40px 1.5rem; gap: 2rem; }
+  .gallery-track:first-child { display: none; }
+  .gallery-track:last-child { height: 110px; }
+  .gallery-track:last-child .gallery-reel {
+    flex-direction: row;
+    animation: reelLeft 16s linear infinite;
+  }
+  .gallery-track:last-child .gallery-item { width: 110px; height: 90px; flex-shrink: 0; }
+  @keyframes reelLeft { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+}
+
+/* ─── COOKIE BANNER ──────────────────────────────── */
+.cookie-banner {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(160px);
+  z-index: 9999;
+  width: min(580px, calc(100vw - 2rem));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 1.4rem 1.6rem;
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(147,51,234,0.1);
+  transition: transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.cookie-banner.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: all; }
+.cookie-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+  border-radius: 1px;
+}
+.cookie-inner { display: flex; align-items: center; gap: 1.1rem; }
+.cookie-icon {
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  background: rgba(147,51,234,0.1);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-light);
+}
+.cookie-body { flex: 1; }
+.cookie-title { font-family: 'Syne',sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+.cookie-text { font-size: 0.75rem; color: var(--text-3); line-height: 1.5; font-weight: 300; }
+.cookie-text a { color: var(--accent-light); text-decoration: none; }
+.cookie-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.cookie-btn-accept {
+  font-family: 'Syne',sans-serif; font-size: 0.75rem; font-weight: 700;
+  color: #fff; background: var(--accent);
+  border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(147,51,234,0.4);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.cookie-btn-accept:hover { background: var(--purple-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(147,51,234,0.55); }
+.cookie-btn-decline {
+  font-family: 'Syne',sans-serif; font-size: 0.75rem; font-weight: 600;
+  color: var(--text-3); background: transparent;
+  border: 1px solid var(--border-soft); padding: 0.5rem 0.85rem; border-radius: 8px; cursor: pointer;
+  transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+}
+.cookie-btn-decline:hover { color: var(--text); border-color: var(--border); }
+@media (max-width: 520px) {
+  .cookie-inner { flex-direction: column; align-items: flex-start; }
+  .cookie-actions { width: 100%; }
+  .cookie-btn-accept, .cookie-btn-decline { flex: 1; text-align: center; }
+}
+
+/* ─── LANG SWITCHER ──────────────────────────────── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 0.18rem;
+  gap: 0.1rem;
+}
+.lang-btn {
+  font-family: 'Syne',sans-serif; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-3); background: transparent;
+  border: none; padding: 0.22rem 0.48rem; border-radius: 6px; cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.lang-btn.active { color: var(--accent-light); background: rgba(147,51,234,0.12); }
+.lang-btn:hover:not(.active) { color: var(--text); }
 </style>
 </head>
 <body>
@@ -1249,11 +1736,16 @@ body::after {
     </a>
     <ul class="nav-links">
       <li><a href="#home" onclick="showPage('home')">Start</a></li>
+      <li><a href="#" onclick="showPage('nova-prism'); return false;">Nova Prism</a></li>
       <li><a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); return false;">Kontakt</a></li>
       <li><a href="#" onclick="showPage('team'); return false;">Unser Team</a></li>
       <li><a href="#" onclick="showPage('geschichte'); return false;">Unsere Geschichte</a></li>
     </ul>
     <div class="nav-right">
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn active" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
       <button class="theme-toggle" id="themeToggle" title="Dark/Light Mode wechseln">
         <span class="theme-icon sun">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -1276,6 +1768,7 @@ body::after {
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home" onclick="showPage('home'); toggleMenu()">Start <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="#" onclick="showPage('nova-prism'); toggleMenu(); return false;">Nova Prism <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#kontakt" onclick="showPage('home'); setTimeout(()=>document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}),100); toggleMenu(); return false;">Kontakt <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#" onclick="showPage('team'); toggleMenu(); return false;">Unser Team <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <a href="#" onclick="showPage('geschichte'); toggleMenu(); return false;">Unsere Geschichte <svg class="menu-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -1330,15 +1823,15 @@ body::after {
           <p class="brand-desc">Unsere Modemarke, die Stil und Innovation verkörpert und Ihnen ermöglicht, sich von der Masse abzuheben. Made in Germany, designed for the world.</p>
           <span class="brand-tag">Fashion</span>
         </a>
-        <div class="brand-card reveal">
+        <a href="https://discord.gg/j8ynhMA6U6" target="_blank" rel="noopener" class="brand-card reveal" style="text-decoration:none;color:inherit;display:block;">
           <div class="brand-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
           <div class="brand-name">Nova Prism</div>
           <div class="brand-subtitle">Design & Kreativität</div>
           <p class="brand-desc">Unsere Grafikdesign-Agentur bietet kreative Lösungen, die nicht nur ins Auge fallen, sondern Ihre Botschaft klar und überzeugend vermitteln.</p>
-          <span class="brand-tag">Design</span>
-        </div>
+          <span class="brand-tag">Design · Discord</span>
+        </a>
         <div class="brand-card reveal">
           <div class="brand-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -1461,19 +1954,19 @@ body::after {
               </div>
               <div>
                 <div class="contact-link-text">0175 9430897</div>
-                <div class="contact-link-sub">Mo–Sa, 15–23 Uhr</div>
+                <div class="contact-link-sub">Mo–Fr, 9–18 Uhr</div>
               </div>
             </a>
-            <a id="mail-contact-link" class="contact-link">
+            <a id="mail-contact-link" class="contact-link" href="#" style="cursor:pointer;">
               <div class="contact-link-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
-                <div class="contact-link-text" id="mail-contact-text"></div>
+                <div class="contact-link-text" id="mail-contact-text">contact@nova-corp.de</div>
                 <div class="contact-link-sub">Antwort innerhalb 24h</div>
               </div>
             </a>
-            <a href="https://maps.app.goo.gl/vTw3sPdsMWnQoL6G6" target="_blank" class="contact-link">
+            <a href="https://maps.app.goo.gl/vTw3sPdsMWnQoL6G6/" target="_blank" class="contact-link">
               <div class="contact-link-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-light)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
@@ -1528,7 +2021,145 @@ body::after {
 </div><!-- end page-home -->
 
 <!-- ════════════════════════════════════════════════ -->
-<!-- WARTUNGEN PAGE -->
+<!-- NOVA PRISM PAGE -->
+<!-- ════════════════════════════════════════════════ -->
+<div id="page-nova-prism" class="page hidden">
+  <!-- HERO STRIP -->
+  <section class="np-hero">
+    <div class="np-hero-bg"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="np-hero-inner">
+        <div class="np-hero-text">
+          <div class="section-label">Nova Prism</div>
+          <h1 class="section-title" style="font-size:clamp(2.2rem,5vw,3.8rem)">Wo Design auf <em>Vision</em> trifft</h1>
+          <p style="font-size:0.95rem;color:var(--text-3);font-weight:300;line-height:1.8;max-width:520px;margin:1rem 0 2rem;">Nova Prism ist die kreative Seele der Nova Corp. Wir erschaffen visuelle Identitäten, die nicht nur gut aussehen – sondern deine Marke zum Leben erwecken. Von Logos bis zur kompletten Brand-Identity.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://discord.gg/j8ynhMA6U6" target="_blank" rel="noopener" class="btn-primary">
+              Auf Discord anfragen
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </a>
+            <a href="#np-gallery" class="btn-secondary" onclick="document.getElementById('np-gallery').scrollIntoView({behavior:'smooth'});return false;">
+              Galerie ansehen
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="np-hero-visual">
+          <div class="np-prism-wrap">
+            <div class="np-prism">
+              <div class="np-prism-face np-f1"></div>
+              <div class="np-prism-face np-f2"></div>
+              <div class="np-prism-face np-f3"></div>
+            </div>
+            <div class="np-glow-ring"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section style="padding:80px 0 60px;position:relative;z-index:1;">
+    <div class="container">
+      <div class="np-services-header np-fade-in">
+        <div class="section-label" style="justify-content:center">Was wir machen</div>
+        <h2 class="section-title" style="text-align:center">Unsere <em>Leistungen</em></h2>
+      </div>
+      <div class="np-services">
+        <div class="np-service-card np-fade-in">
+          <div class="np-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>Logo Design</h3>
+          <p>Einzigartige Logos, die deine Marke auf einen Blick erkennbar machen. Modern, zeitlos, deins.</p>
+        </div>
+        <div class="np-service-card np-fade-in">
+          <div class="np-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Brand Identity</h3>
+          <p>Farben, Typografie, Stil – wir entwickeln ein konsistentes Markenbild, das überall funktioniert.</p>
+        </div>
+        <div class="np-service-card np-fade-in">
+          <div class="np-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Grafik & Illustration</h3>
+          <p>Social Media Assets, Poster, Merch – kreative Grafiken für jeden Anwendungsfall.</p>
+        </div>
+        <div class="np-service-card np-fade-in">
+          <div class="np-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <h3>Motion & Visual FX</h3>
+          <p>Animierte Logos, Intros, Motion Graphics – für YouTube, Discord und Social Media.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section id="np-gallery" style="padding:60px 0 100px;position:relative;z-index:1;">
+    <div class="container">
+      <div class="np-gallery-header np-fade-in">
+        <div class="section-label" style="justify-content:center">Galerie</div>
+        <h2 class="section-title" style="text-align:center">Unsere <em>Arbeiten</em></h2>
+        <p style="text-align:center;color:var(--text-3);font-size:0.9rem;font-weight:300;max-width:500px;margin:1rem auto 3rem;">Design-Beispiele aus unserem Portfolio. Füge deine eigenen Bilder hinzu indem du die Quellcode-Kommentare befolgst.</p>
+      </div>
+      <div class="np-grid">
+
+        <!-- DESIGN CARD — ersetze background-image mit deiner URL z.B. style="background-image:url('design1.jpg')" -->
+        <div class="np-card np-fade-in" style="--np-bg:linear-gradient(135deg,#3b0764 0%,#7c3aed 50%,#c084fc 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Logo Design</div>
+        </div>
+        <div class="np-card np-card-wide np-fade-in" style="--np-bg:linear-gradient(120deg,#1e1b4b 0%,#4c1d95 40%,#a855f7 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Brand Identity</div>
+        </div>
+        <div class="np-card np-fade-in" style="--np-bg:linear-gradient(135deg,#0f172a 0%,#6b21a8 60%,#9333ea 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Motion FX</div>
+        </div>
+
+        <div class="np-card np-card-tall np-fade-in" style="--np-bg:linear-gradient(160deg,#1a0533 0%,#7e22ce 50%,#c084fc 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Illustration</div>
+        </div>
+        <div class="np-card np-fade-in" style="--np-bg:linear-gradient(135deg,#2e1065 0%,#9333ea 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Poster</div>
+        </div>
+        <div class="np-card np-fade-in" style="--np-bg:linear-gradient(135deg,#150728 0%,#7c3aed 60%,#a855f7 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Social Media</div>
+        </div>
+
+        <div class="np-card np-card-wide np-fade-in" style="--np-bg:linear-gradient(120deg,#3b0764 0%,#6d28d9 50%,#8b5cf6 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Merch Design</div>
+        </div>
+        <div class="np-card np-fade-in" style="--np-bg:linear-gradient(135deg,#1e0a3c 0%,#9333ea 50%,#e879f9 100%)">
+          <div class="np-card-inner"></div>
+          <div class="np-card-label">Icon Set</div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="np-cta np-fade-in">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;margin-bottom:0.75rem;">Dein Design fehlt noch hier?</h3>
+        <p style="color:var(--text-3);font-size:0.9rem;font-weight:300;margin-bottom:1.5rem;">Tritt unserem Discord bei und lass uns zusammen etwas Großartiges erschaffen.</p>
+        <a href="https://discord.gg/j8ynhMA6U6" target="_blank" rel="noopener" class="btn-primary">
+          Discord beitreten
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
 <!-- ════════════════════════════════════════════════ -->
 <div id="page-wartungen" class="page hidden">
   <div class="inner-page active">
@@ -1656,7 +2287,7 @@ body::after {
             <strong>Nova Corp</strong><br>
             Giuseppe Antonio Majica (Geschäftsführer)<br>
             Pater-Dionysius-Str. 41<br>
-            50767 Köln-Chorweiler<br>
+            50739 Köln-Chorweiler<br>
             Deutschland
           </p>
         </div>
@@ -1680,7 +2311,7 @@ body::after {
           <p>
             Giuseppe Antonio Majica<br>
             Pater-Dionysius-Str. 41<br>
-            50767 Köln-Chorweiler
+            50739 Köln-Chorweiler
           </p>
         </div>
 
@@ -1729,7 +2360,7 @@ body::after {
             <strong>Nova Corp</strong><br>
             Giuseppe Antonio Majica<br>
             Pater-Dionysius-Str. 41<br>
-            50767 Köln-Chorweiler<br>
+            50739 Köln-Chorweiler<br>
             Deutschland<br><br>
             <a id="mail-datenschutz" style="color:var(--accent-light);"></a>
           </p>
@@ -1820,7 +2451,27 @@ body::after {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><!-- ─── COOKIE BADGE ──────────────────────────────── -->
+<div class="cookie-badge" id="cookieBadge">
+  <div class="cookie-badge-inner">
+    <div class="cookie-badge-top">
+      <div class="cookie-badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01"/></svg>
+      </div>
+      <div>
+        <div class="cookie-badge-title">Wir nutzen Cookies 🍪</div>
+        <div class="cookie-badge-sub">Nova Corp · nova-corp.de</div>
+      </div>
+    </div>
+    <p class="cookie-badge-text">Nur technisch notwendige Cookies (Dark Mode, Spracheinstellung). Kein Tracking, keine Werbung. <a href="#" onclick="showPage('datenschutz'); cbDismiss(); return false;">Mehr erfahren</a></p>
+    <div class="cookie-badge-btns">
+      <button class="cb-accept" onclick="cbAccept()">Alles klar!</button>
+      <button class="cb-decline" onclick="cbDismiss()">Ablehnen</button>
+    </div>
+  </div>
+</div>
+
+<script>
 // ─── THEME ────────────────────────────────────────
 const html = document.documentElement;
 const savedTheme = localStorage.getItem('nova-theme') || 'dark';
@@ -1844,40 +2495,37 @@ function toggleMenu() {
 document.getElementById('hamburger').addEventListener('click', toggleMenu);
 
 // ─── PAGE NAVIGATION ──────────────────────────────
-const pages = ['home','wartungen','nova-surf','team','geschichte','impressum','datenschutz'];
+const pages = ['home','nova-prism','wartungen','nova-surf','team','geschichte','impressum','datenschutz'];
 function showPage(id) {
   pages.forEach(p => {
     const el = document.getElementById('page-' + p);
-    if (el) {
-      if (p === id) {
-        el.classList.remove('hidden');
-      } else {
-        el.classList.add('hidden');
-      }
-    }
+    if (el) el.classList.toggle('hidden', p !== id);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('hamburger').setAttribute('aria-label', 'Menü öffnen');
-
-  if (id !== 'home') {
-    // For sub-pages: reset then stagger-reveal all items
+  if (id === 'nova-prism') {
+    const activePage = document.getElementById('page-nova-prism');
+    if (activePage) {
+      // Immediately show above-fold elements, then observe rest on scroll
+      const items = activePage.querySelectorAll('.np-fade-in');
+      items.forEach(el => el.classList.remove('visible'));
+      items.forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), 80 + i * 70);
+      });
+    }
+  } else if (id !== 'home') {
     const activePage = document.getElementById('page-' + id);
     if (activePage) {
       const items = activePage.querySelectorAll('.reveal');
       items.forEach(el => el.classList.remove('visible'));
       items.forEach((el, i) => {
         el.style.transitionDelay = '0s';
-        setTimeout(() => {
-          el.style.transitionDelay = (i * 0.08) + 's';
-          el.classList.add('visible');
-        }, 50 + i * 80);
+        setTimeout(() => { el.style.transitionDelay = (i * 0.08) + 's'; el.classList.add('visible'); }, 50 + i * 80);
       });
     }
-  } else {
-    observeReveal();
-  }
+  } else { observeReveal(); }
 }
 
 // ─── SCROLL REVEAL ────────────────────────────────
@@ -1910,23 +2558,98 @@ function switchTab(cat) {
   document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
   event.target.classList.add('active');
   document.querySelectorAll('.faq-item').forEach(item => {
-    if (cat === 'all' || item.dataset.cat === cat) {
-      item.style.display = '';
-    } else {
-      item.style.display = 'none';
-    }
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
   });
 }
 
 // ─── NAV SCROLL EFFECT ────────────────────────────
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('.nav');
-  if (window.scrollY > 20) {
-    nav.style.boxShadow = '0 4px 40px rgba(0,0,0,0.25)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
+  nav.style.boxShadow = window.scrollY > 20 ? '0 4px 40px rgba(0,0,0,0.25)' : 'none';
 });
+
+// ─── NOVA PRISM SCROLL FADE ───────────────────────
+function observeNovaPrism() {
+  const page = document.getElementById('page-nova-prism');
+  if (!page || page.classList.contains('hidden')) return;
+  const els = page.querySelectorAll('.np-fade-in:not(.visible)');
+  els.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 70));
+}
+window.addEventListener('scroll', observeNovaPrism);
+
+// ─── COOKIE BADGE ─────────────────────────────────
+function cbAccept() {
+  localStorage.setItem('nova-cookie', 'accepted');
+  const b = document.getElementById('cookieBadge');
+  b.style.transform = 'translateY(120px) scale(0.85)';
+  b.style.opacity = '0';
+  setTimeout(() => b.style.display = 'none', 600);
+}
+function cbDismiss() {
+  localStorage.setItem('nova-cookie', 'dismissed');
+  const b = document.getElementById('cookieBadge');
+  b.style.transform = 'translateY(120px) scale(0.85)';
+  b.style.opacity = '0';
+  setTimeout(() => b.style.display = 'none', 600);
+}
+setTimeout(() => {
+  if (!localStorage.getItem('nova-cookie')) {
+    document.getElementById('cookieBadge').classList.add('show');
+  }
+}, 1400);
+
+// ─── TRANSLATIONS ─────────────────────────────────
+const i18n = {
+  de: {
+    gallery_title: 'Designs die <em>bewegen</em>',
+    gallery_desc: 'Von Logo-Design bis kompletten Brand-Identitäten – Nova Prism erschafft visuelle Welten, die in Erinnerung bleiben. Kreativ, präzise, auf Ihre Vision zugeschnitten.',
+    gallery_cta: 'Design anfragen',
+    cookie_title: 'Wir nutzen Cookies',
+    cookie_text: 'Nur technisch notwendige Cookies (z.B. Dark Mode). Keine Tracker. ',
+    cookie_more: 'Mehr erfahren',
+    cookie_accept: 'Verstanden',
+    cookie_decline: 'Ablehnen',
+  },
+  en: {
+    gallery_title: 'Designs that <em>move</em>',
+    gallery_desc: 'From logo design to complete brand identities – Nova Prism creates visual worlds that leave a lasting impression. Creative, precise, tailored to your vision.',
+    gallery_cta: 'Request design',
+    cookie_title: 'We use cookies',
+    cookie_text: 'Only technically necessary cookies (e.g. dark mode). No trackers. ',
+    cookie_more: 'Learn more',
+    cookie_accept: 'Got it',
+    cookie_decline: 'Decline',
+  }
+};
+
+let currentLang = 'de';
+
+function applyTranslations(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  html.setAttribute('lang', lang);
+}
+
+function setLang(lang) {
+  localStorage.setItem('nova-lang', lang);
+  applyTranslations(lang);
+}
+
+// Auto-detect language
+(function detectLang() {
+  const saved = localStorage.getItem('nova-lang');
+  if (saved) { applyTranslations(saved); return; }
+  const browserLang = (navigator.language || navigator.userLanguage || 'de').slice(0,2).toLowerCase();
+  applyTranslations(browserLang === 'en' ? 'en' : 'de');
+})();
 
 // ─── CONTACT FORM ────────────────────────────────
 document.getElementById('cf-send').addEventListener('click', () => {
@@ -1935,70 +2658,44 @@ document.getElementById('cf-send').addEventListener('click', () => {
   const email    = document.getElementById('cf-email').value.trim();
   const anliegen = document.getElementById('cf-anliegen').value.trim();
   const msg      = document.getElementById('cf-msg');
-
-  // Validation
   if (!vorname || !nachname || !email || !anliegen) {
     msg.className = 'cf-msg error';
-    msg.textContent = 'Bitte alle Felder ausfüllen.';
-    msg.style.display = 'block';
-    return;
+    msg.textContent = currentLang === 'en' ? 'Please fill in all fields.' : 'Bitte alle Felder ausfüllen.';
+    msg.style.display = 'block'; return;
   }
-  const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailReg.test(email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     msg.className = 'cf-msg error';
-    msg.textContent = 'Bitte eine gültige E-Mail-Adresse eingeben.';
-    msg.style.display = 'block';
-    return;
+    msg.textContent = currentLang === 'en' ? 'Please enter a valid email address.' : 'Bitte eine gültige E-Mail-Adresse eingeben.';
+    msg.style.display = 'block'; return;
   }
-
-  // Build mailto
   const to      = 'adm' + 'in' + '\u0040' + 'nova-corp' + '.' + 'de';
   const subject = encodeURIComponent('Kontaktanfrage von ' + vorname + ' ' + nachname);
-  const body    = encodeURIComponent(
-    'Name: ' + vorname + ' ' + nachname + '\n' +
-    'E-Mail: ' + email + '\n\n' +
-    'Anliegen:\n' + anliegen
-  );
+  const body    = encodeURIComponent('Name: ' + vorname + ' ' + nachname + '\nE-Mail: ' + email + '\n\nAnliegen:\n' + anliegen);
   window.location.href = 'mai' + 'lto:' + to + '?subject=' + subject + '&body=' + body;
-
-  // Success feedback
   msg.className = 'cf-msg success';
-  msg.textContent = 'Dein E-Mail-Programm wird geöffnet. Bitte dort auf Senden klicken.';
+  msg.textContent = currentLang === 'en' ? 'Your email client will open. Please click send there.' : 'Dein E-Mail-Programm wird geöffnet. Bitte dort auf Senden klicken.';
   msg.style.display = 'block';
 });
 
-
+// ─── EMAIL LINKS (Cloudflare-safe) ────────────────
 (function() {
   const general  = 'admin'   + '\u0040' + 'nova-corp' + '.' + 'de';
   const imprint  = 'impressum' + '\u0040' + 'nova-corp' + '.' + 'de';
   const hGeneral = 'mai' + 'lto:' + general;
   const hImprint = 'mai' + 'lto:' + imprint;
-
-  // Impressum uses its own address
   const imp = document.getElementById('mail-impressum');
   if (imp) { imp.href = hImprint; imp.textContent = imprint; }
-
-  // All other links use the general address
   ['mail-datenschutz','mail-datenschutz-2','mail-team','mail-wartungen','mail-novasurf'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.href = hGeneral; el.textContent = general; }
   });
-
-  // Contact section card link
   const cl = document.getElementById('mail-admin-link');
   const ct = document.getElementById('mail-admin-text');
   if (cl) cl.href = hGeneral;
   if (ct) ct.textContent = general;
-
-  // Footer link
   const fl = document.getElementById('mail-footer');
   if (fl) fl.href = hGeneral;
 })();
 </script>
 </body>
 </html>
-
-
-
-
-
